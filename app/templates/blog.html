@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <title>Простой блог</title>
+    <title>Анкета пользователя</title>
     <style>
         body {
             background-color: #f8f9fa;
@@ -16,37 +16,47 @@
             border-radius: 10px;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
         }
-        .post {
+        .entry {
             padding: 20px;
             margin-bottom: 20px;
             border: 1px solid #e9ecef;
             border-radius: 10px;
         }
-        .post h4 {
+        .entry h4 {
             color: #007bff;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1 class="text-center mb-4">Простой блог</h1>
+        <h1 class="text-center mb-4">Анкета пользователя</h1>
         <form method="POST" action="/">
             <div class="form-group">
-                <label for="title">Заголовок:</label>
-                <input type="text" class="form-control" id="title" name="title" required>
+                <label for="name">Имя:</label>
+                <input type="text" class="form-control" id="name" name="name" required>
             </div>
             <div class="form-group">
-                <label for="content">Текст поста:</label>
-                <textarea class="form-control" id="content" name="content" rows="3" required></textarea>
+                <label for="city">Город:</label>
+                <input type="text" class="form-control" id="city" name="city" required>
             </div>
-            <button type="submit" class="btn btn-primary btn-block">Отправить пост</button>
+            <div class="form-group">
+                <label for="hobby">Хобби:</label>
+                <input type="text" class="form-control" id="hobby" name="hobby" required>
+            </div>
+            <div class="form-group">
+                <label for="age">Возраст:</label>
+                <input type="number" class="form-control" id="age" name="age" required>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Отправить анкету</button>
         </form>
         <hr>
-        <h2 class="my-4">Посты</h2>
-        {% for post in posts %}
-        <div class="post">
-            <h4>{{ post.title }}</h4>
-            <p>{{ post.content }}</p>
+        <h2 class="my-4">Анкеты</h2>
+        {% for entry in entries %}
+        <div class="entry">
+            <h4>{{ entry.name }}</h4>
+            <p>Город: {{ entry.city }}</p>
+            <p>Хобби: {{ entry.hobby }}</p>
+            <p>Возраст: {{ entry.age }}</p>
         </div>
         {% endfor %}
     </div>
@@ -54,3 +64,4 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
+
